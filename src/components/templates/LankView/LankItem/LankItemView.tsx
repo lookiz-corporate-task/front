@@ -13,9 +13,6 @@ export const LankItemView = () => {
           className="rounded-xl"
         />
       </div>
-      <div className="flex flex-col">
-        <p className="font-bold">#룩키즈 #만세 #흥행 #보장</p>
-      </div>
     </div>
   );
 };
