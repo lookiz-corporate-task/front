@@ -1,13 +1,12 @@
+import Link from 'next/link';
 import LookidsLogo from '../../svg/lookidsLogo.svg';
 
-interface Props {
-  tabIndex?: number;
-}
-
-export const Header = (props: Props) => {
+export const Header = () => {
   return (
     <div className="h-[52px]">
-      <LookidsLogo />
+      <Link href={'/'}>
+        <LookidsLogo />
+      </Link>
     </div>
   );
 };

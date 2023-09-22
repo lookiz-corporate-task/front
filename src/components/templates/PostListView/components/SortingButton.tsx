@@ -31,5 +31,5 @@ export const SortingButton = () => {
   );
 };
 
-const activeText = 'bg-yellow-600 text-white';
+const activeText = 'bg-yellow-500 text-white';
 const optionalText = 'text-gray-500';
