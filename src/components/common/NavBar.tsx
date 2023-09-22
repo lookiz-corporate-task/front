@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -8,7 +7,7 @@ import MyPageIcon from '../../svg/mypage.svg';
 export const NavBar = () => {
   const pathname = usePathname();
 
-  const navbar = `flex justify-center items-center max-w-md h-[80px] border-t border-neutral-300`;
+  const navbar = `flex justify-center items-center max-w-md h-[60px] border-t border-neutral-300 z-30 bg-white`;
   const activeText = `font-semibold text-yellow-500`;
   const optionalText = 'text-black';
 
@@ -16,7 +15,9 @@ export const NavBar = () => {
     <nav className={navbar}>
       <Link href="/" className={`flex-1`}>
         <div
-          className={`flex  flex-col items-center ${pathname === '/' ? activeText : optionalText}`}
+          className={`flex  flex-col items-center text-sm ${
+            pathname === '/' ? activeText : optionalText
+          }`}
         >
           <HomeIcon />
           <p>홈</p>
@@ -24,7 +25,7 @@ export const NavBar = () => {
       </Link>
       <Link href="/mypage" className={`flex-1`}>
         <div
-          className={`flex flex-col items-center ${
+          className={`flex flex-col items-center text-sm ${
             pathname === '/mypage' ? activeText : optionalText
           }`}
         >

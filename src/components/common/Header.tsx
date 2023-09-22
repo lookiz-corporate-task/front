@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import LookidsLogo from '../../svg/lookidsLogo.svg';
 
 interface Props {
