@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Rank from '../../../../svg/rank10.svg';
 
 export const LankItemView = () => {
   return (
