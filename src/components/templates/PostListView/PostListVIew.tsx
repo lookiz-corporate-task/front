@@ -10,9 +10,9 @@ export const PostListView = () => {
       column={2}
       columnSize={200}
       columnSizeRatio={0}
-      onRenderComplete={(e) => {
-        console.log(e);
-      }}
+      // onRenderComplete={(e) => {
+      //   console.log(e);
+      // }}
     >
       <div className={'item'}>
         <PostItemView imgPath={'/img/baby.jpg'} hashTags={'#Look Kids #Long Live #Box Office'} />
