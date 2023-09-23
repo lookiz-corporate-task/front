@@ -3,7 +3,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-import { Mousewheel } from 'swiper/modules';
+import { Mousewheel, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { LankItemView } from './LankItem/LankItemView';
 import { Post } from '@/types/post';
@@ -20,8 +20,12 @@ export const LankView = ({ rankList }: Props) => {
         slidesPerView={2}
         spaceBetween={20}
         mousewheel={true}
-        modules={[Mousewheel]}
+        modules={[Mousewheel, Autoplay]}
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
       >
         {rankList?.map((rank: Post) => (
           <SwiperSlide className="mb-8" key={rank.id}>

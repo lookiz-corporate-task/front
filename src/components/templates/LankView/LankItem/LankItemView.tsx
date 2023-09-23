@@ -16,7 +16,7 @@ export const LankItemView = ({ pageData, isRanking }: Props) => {
           height={200}
           alt=""
           priority
-          className="object-cover"
+          className=" object-cotain w-[200px] h-[200px]"
         />
       </div>
       {isRanking && (
