@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios';
 import querystring from 'querystring';
+import { generateInstagramRedirectUri } from '@/utils/uri';
 
 export default async function handler(
   req: NextApiRequest,
@@ -73,11 +74,11 @@ const getInstagramAccessToken = async ({redirectUri, code}: {redirectUri: string
 
 const updateUserInstagramId = async ({userId, email}: {userId: string, email: string}) => {
   const payload = {
-    user_id: userId,
+    instaId: userId,
     email: email
   };
 
-  const response = await axios.post('http://localhost:8080/integration', payload); 
+  const response = await axios.post('http://localhost:8080/users/connect', payload); 
 
   return response.data
 }
