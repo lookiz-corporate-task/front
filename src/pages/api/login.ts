@@ -30,7 +30,7 @@ const requestLogin = async ({ email, password }: { email: string; password: stri
   });
 
   const response = await axios.post<String>(
-    'https://27.96.130.147/users/signin',
+    `${process.env.NEXT_PUBLIC_API_HTTPS_BASE_URL}/users/signin`,
     {
       email,
       password,
@@ -45,4 +45,3 @@ const requestLogin = async ({ email, password }: { email: string; password: stri
 
   return response.data;
 };
-

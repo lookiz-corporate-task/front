@@ -5,6 +5,7 @@ import { Post } from '@/types/post';
 import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import https from 'https';
 
 interface Props {
   rankList: Post[];
@@ -13,10 +14,15 @@ interface Props {
 }
 
 const likePost = async (id: number, email: string) => {
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   await axios.post(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/likes/${id}`,
+    `${process.env.NEXT_PUBLIC_API_HTTPS_BASE_URL}/likes/${id}`,
     {},
     {
+      httpsAgent: agent,
       headers: {
         'Content-Type': 'application/json',
         Authorization: email,
@@ -26,7 +32,12 @@ const likePost = async (id: number, email: string) => {
 };
 
 const unLikePost = async (id: number, email: string) => {
-  await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/likes/${id}`, {
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
+  await axios.delete(`${process.env.NEXT_PUBLIC_API_HTTPS_BASE_URL}/likes/${id}`, {
+    httpsAgent: agent,
     headers: {
       'Content-Type': 'application/json',
       Authorization: email,
