@@ -6,8 +6,13 @@ import 'swiper/css/scrollbar';
 import { Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { LankItemView } from './LankItem/LankItemView';
+import { Post } from '@/types/post';
 
-export const LankView = () => {
+interface Props {
+  rankList: Post[];
+}
+
+export const LankView = ({ rankList }: Props) => {
   return (
     <div className="flex justify-center items-center">
       <Swiper
@@ -18,24 +23,11 @@ export const LankView = () => {
         modules={[Mousewheel]}
         pagination={{ clickable: true }}
       >
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
-        <SwiperSlide className="mb-8">
-          <LankItemView />
-        </SwiperSlide>
+        {rankList?.map((rank: Post) => (
+          <SwiperSlide className="mb-8" key={rank.id}>
+            <LankItemView pageData={rank} isRanking={true} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

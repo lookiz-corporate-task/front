@@ -1,7 +1,13 @@
+import { Post } from '@/types/post';
 import { PostItemView } from './components/PostItem/PostItemView';
 import { MasonryGrid } from '@egjs/react-grid';
 
-export const PostListView = () => {
+interface Props {
+  postList: Post[];
+  toggleLike: any;
+}
+
+export const PostListView = ({ postList, toggleLike }: Props) => {
   return (
     <MasonryGrid
       gap={15}
@@ -10,28 +16,12 @@ export const PostListView = () => {
       column={2}
       columnSize={200}
       columnSizeRatio={0}
-      // onRenderComplete={(e) => {
-      //   console.log(e);
-      // }}
     >
-      <div className={'item'}>
-        <PostItemView imgPath={'/img/baby.jpg'} hashTags={'#Look Kids #Long Live #Box Office'} />
-      </div>
-      <div className={'item'}>
-        <PostItemView
-          imgPath={'/img/kids.jpg'}
-          hashTags={'#룩키즈 #기웅이형 #OOTD #Long Live #Box Office #Guarantee'}
-        />
-      </div>
-      <div className={'item'}>
-        <PostItemView
-          imgPath={'/img/kids.jpg'}
-          hashTags={'#룩키즈 #기웅이형 #OOTD #Long Live #Box Office #Guarantee'}
-        />
-      </div>
-      <div className={'item'}>
-        <PostItemView imgPath={'/img/baby.jpg'} hashTags={'#Look Kids #Long Live #Box Office'} />
-      </div>
+      {postList.map((post: Post) => (
+        <div className={'item'} key={post.id}>
+          <PostItemView post={post} toggleLike={toggleLike} />
+        </div>
+      ))}
     </MasonryGrid>
   );
 };

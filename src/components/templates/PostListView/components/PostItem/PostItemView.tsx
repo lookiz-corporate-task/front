@@ -1,28 +1,19 @@
 import Image from 'next/image';
 import Heart from '../../../../../svg/heart.svg';
 import FullHeart from '../../../../../svg/fullheart.svg';
-import { useState } from 'react';
+import { Post } from '@/types/post';
 
 interface Props {
-  imgPath: string;
-  hashTags: string;
+  post: Post;
+  toggleLike: any;
 }
 
-export const PostItemView = ({ imgPath, hashTags }: Props) => {
-  const [isLike, setIsLike] = useState<boolean>();
-
-  const toggleLike = async () => {
-    if (isLike === false) {
-      await setIsLike(!isLike);
-    }
-    await setIsLike(!isLike);
-  };
-
+export const PostItemView = ({ post, toggleLike }: Props) => {
   return (
-    <div className="flex flex-col items-center w-[200px]">
+    <div className="flex flex-col w-[200px] h-full">
       <div className="w-[200px] border rounded-xl bg-[#f9f2e7]">
         <Image
-          src={imgPath}
+          src={post.mediaUrl}
           alt=""
           width={200}
           height={200}
@@ -30,15 +21,18 @@ export const PostItemView = ({ imgPath, hashTags }: Props) => {
           className="rounded-xl w-full h-auto"
         />
       </div>
-      <div className="flex">
-        <p className="font-bold">{hashTags}</p>
-        <div
-          className={`h-full`}
-          onClick={() => {
-            toggleLike();
-          }}
-        >
-          {isLike ? <FullHeart /> : <Heart />}
+      <div className="flex justify-between items-center">
+        <p className="font-bold mr-10">{post.username}</p>
+        <div className={'flex items-center'}>
+          <div
+            className={`h-full w-full`}
+            onClick={() => {
+              toggleLike(post.id, post.liked);
+            }}
+          >
+            {post.liked ? <FullHeart /> : <Heart />}
+          </div>
+          <p className="ml-1">{post.likeCount}</p>
         </div>
       </div>
     </div>
