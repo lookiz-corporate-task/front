@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     requestLogin({ email, password });
 
-    res.setHeader('Set-Cookie', `user_email=${email}; Path=/; Max-Age=3600; HttpOnly; Secure`);
+    res.setHeader('Set-Cookie', `user_email=${email}; Path=/; HttpOnly; Secure`);
 
     res.status(200).json({ message: 'success' });
   } catch (ex: any) {

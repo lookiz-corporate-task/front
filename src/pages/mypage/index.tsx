@@ -23,6 +23,16 @@ export async function getServerSideProps(context: any) {
 }
 
 const MyPage = ({ myPageList }: Props) => {
+  const handleLogout = async () => {
+    await fetch('/api/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    window.location.reload();
+  };
+
   return (
     <div className="w-[440px] h-full">
       <div className="px-5">
@@ -32,7 +42,14 @@ const MyPage = ({ myPageList }: Props) => {
               ? `${myPageList[0].username}님의 마이페이지`
               : '인스타그램과 연동해주세요.'}
           </h1>
-          {/* <button className="bg-yellow-500 p-1 rounded-lg text-sm text-white">로그아웃</button> */}
+          <button
+            className="bg-yellow-500 p-1 rounded-lg text-sm text-white"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            로그아웃
+          </button>
         </div>
         {myPageList[0] && (
           <div className="flex flex-col items-center justify-between pb-2 pt-2 border-t-2">
