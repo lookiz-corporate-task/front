@@ -13,8 +13,6 @@ const InstagramButton = ({ cookieString }: any) => {
       const data = await response.json();
 
       window.open(data.redirect_uri);
-
-      return data.redirect_uri;
     } catch (err) {
       console.error(err);
     }

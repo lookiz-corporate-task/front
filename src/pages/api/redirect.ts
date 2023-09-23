@@ -21,11 +21,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       email: state,
     });
 
-
     res.status(200).send(`
         <html>
           <body>
             <script>
+              window.opener.location.reload();
               window.close();
             </script>
           </body>

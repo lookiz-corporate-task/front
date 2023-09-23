@@ -9,7 +9,7 @@ interface Props {
 export async function getServerSideProps(context: any) {
   const email = context.req.cookies['user_email'];
 
-  const loginResult = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/my`, {
+  const mypageListResult = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/my`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ export async function getServerSideProps(context: any) {
     },
   });
 
-  const myPageList = await loginResult.json();
+  const myPageList = await mypageListResult.json();
 
   return { props: { myPageList } };
 }
