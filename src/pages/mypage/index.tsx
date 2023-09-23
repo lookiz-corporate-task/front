@@ -1,4 +1,4 @@
-import { InstagramButton } from '@/components/templates/InstagramButton/InstagramButton';
+import InstagramButton from '@/components/templates/InstagramButton/InstagramButton';
 import { LankItemView } from '@/components/templates/LankView/LankItem/LankItemView';
 import { useState } from 'react';
 
