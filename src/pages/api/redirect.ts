@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       email: state,
     });
 
+
     res.status(200).send(`
         <html>
           <body>

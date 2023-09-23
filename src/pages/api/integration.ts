@@ -26,3 +26,4 @@ const getPropsFromReq = (req: NextApiRequest) => {
 
   return { email };
 };
+
