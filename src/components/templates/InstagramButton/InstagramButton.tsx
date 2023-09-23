@@ -1,8 +1,6 @@
 import InstagramLogo from '../../../svg/instagram.svg';
 
 const InstagramButton = ({ cookieString }: any) => {
-  console.log(cookieString);
-
   const redirectInstagramConnect = async () => {
     try {
       const response = await fetch('/api/integration', {
